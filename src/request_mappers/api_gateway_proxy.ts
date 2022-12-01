@@ -8,9 +8,7 @@ export type ApiGatewayProxyEventMapper<Req> = RequestMapper<APIGatewayProxyHandl
  *
  * Provides additional `body`, `queries`, `paths` from the event.
  */
-export function apiGatewayProxyRequestMapper<Req>(...args: Parameters<ApiGatewayProxyEventMapper<Req>>): ReturnType<ApiGatewayProxyEventMapper<Req>> {
-    const [event] = args;
-
+export function apiGatewayProxyRequestMapper<Req>(...[event]: Parameters<ApiGatewayProxyEventMapper<Req>>): ReturnType<ApiGatewayProxyEventMapper<Req>> {
     const body = event.body ? JSON.parse(event.body) : {};
 
     const queries = event.queryStringParameters ? event.queryStringParameters : {};

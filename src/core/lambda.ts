@@ -17,6 +17,6 @@ export type Lambda<T extends Handler, Params, Result> = Pipe<Parameters<T>, Para
  * Return an object that has the type of `Result` in the second function.
  * Last, Parse the object to be matched with the given return type of the handler.
  */
-export function lambda<T extends Handler, Params, Result>(...args: Parameters<Lambda<T, Params, Result>>) {
+export function lambda<T extends Handler, Params, Result>(...args: Parameters<Lambda<T, Params, Result>>): ReturnType<Lambda<T, Params, Result>> {
     return pipe(...args);
 }

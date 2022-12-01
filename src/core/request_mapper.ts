@@ -1,5 +1,5 @@
 import { Handler } from "aws-lambda";
-import { PromiseOr } from "./common";
+import { PromiseOr } from "./promise";
 
 /**
  * Map the passed arguments which are parameters from one of the AWS Lambda handler

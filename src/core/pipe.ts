@@ -1,4 +1,4 @@
-import { PromiseOr } from "./common";
+import { PromiseOr } from "./promise";
 
 /**
  * A type of functon with multiple arguments and single result.
@@ -19,7 +19,7 @@ export type Pipe<A extends any[], B, C, D> = (f1: EntryFn<A, PromiseOr<B>>, f2: 
  * Prepare for three layered functions that might operate as [`Promise`].
  * The returning function always operates as [`Promise`] though.
  */
-export function pipe<A extends any[], B, C, D>(f1: EntryFn<A, PromiseOr<B>>, f2: Fn<B, PromiseOr<C>>, f3: Fn<C, PromiseOr<D>>): EntryFn<A, Promise<D>> {
+export function pipe<A extends any[], B, C, D>(...[f1, f2, f3]: Parameters<Pipe<A, B, C, D>>): ReturnType<Pipe<A, B, C, D>> {
     return async (...args) => {
         const a = await f1(...args);
 

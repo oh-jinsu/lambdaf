@@ -14,10 +14,8 @@ export type ApiGatewayProxyResponseMapper<Res extends ApiGatewayProxyResponse> =
  * The generic paramater `Res` must contain `statusCode` and `body` properties.
  */
 export function apiGatewayProxyResponseMapper<Res extends ApiGatewayProxyResponse>(
-    ...args: Parameters<ApiGatewayProxyResponseMapper<Res>>
+    ...[result]: Parameters<ApiGatewayProxyResponseMapper<Res>>
 ): ReturnType<ApiGatewayProxyResponseMapper<Res>> {
-    const [result] = args;
-
     return {
         statusCode: result.statusCode,
         body: JSON.stringify(result.body),
