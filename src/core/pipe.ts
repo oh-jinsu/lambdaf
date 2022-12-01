@@ -1,4 +1,4 @@
-import { PromiseOr } from "./promise";
+import { PromiseOr } from "../common/promise";
 
 /**
  * A type of functon with multiple arguments and single result.
