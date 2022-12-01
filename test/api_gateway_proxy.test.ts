@@ -38,15 +38,11 @@ describe("apiGatewayProxyLambda", () => {
     /**
      * Set up your API Gateway Proxy Lambda handler.
      */
-    const handler = apiGatewayProxyLambda<Request, Response, Exception>((result) => {
-        if (result instanceof Err) {
-            return result;
-        }
-
-        if (result.value.body.name.length === 0) {
+    const handler = apiGatewayProxyLambda<Request, Response, Exception>(({ body }) => {
+        if (body.name.length === 0) {
             return new Err({
                 statusCode: 400,
-                code: 1,
+                code: 1 as const,
                 message: "The name is empty!",
             });
         }
@@ -54,7 +50,7 @@ describe("apiGatewayProxyLambda", () => {
         return new Ok({
             statusCode: 200,
             body: {
-                message: `Hello, ${result.value.body.name}!`,
+                message: `Hello, ${body.name}!`,
             },
         });
     });
