@@ -1,7 +1,7 @@
 import { apiGatewayProxyLambda } from "../src";
 import { Err, Ok } from "../src/common/result";
 
-describe("apiGatewayProxyLambda", async () => {
+describe("apiGatewayProxyLambda", () => {
     /**
      * Declare your request.
      * This request contains a `body` which has a `name` property.
@@ -30,10 +30,10 @@ describe("apiGatewayProxyLambda", async () => {
      * with `statusCode` and `code`.
      */
     type Exception = {
-        statusCode: 400,
-        code: 1,
+        statusCode: 400;
+        code: 1;
         message: string;
-    }
+    };
 
     /**
      * Set up your API Gateway Proxy Lambda handler.
@@ -48,7 +48,7 @@ describe("apiGatewayProxyLambda", async () => {
                 statusCode: 400,
                 code: 1,
                 message: "The name is empty!",
-            })
+            });
         }
 
         return new Ok({
@@ -104,6 +104,7 @@ describe("apiGatewayProxyLambda", async () => {
          */
         expect(result?.body).toBe(
             JSON.stringify({
+                code: 1,
                 message: "The name is empty!",
             }),
         );
