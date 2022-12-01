@@ -1,11 +1,17 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
 import { ResponseMapper } from "../core/response_mapper";
 
+/**
+ * The previous usecase must provide `statusCode` and `body` properties.
+ */
 export type ApiGatewayProxyResponse = {
     statusCode: number;
     body: any;
 };
 
+/**
+ * A type of [`apiGatewayProxyResponseMapper`] function.
+ */
 export type ApiGatewayProxyResponseMapper<Res extends ApiGatewayProxyResponse> = ResponseMapper<APIGatewayProxyHandler, Res>;
 
 /**

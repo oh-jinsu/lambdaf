@@ -20,13 +20,13 @@ export type Pipe<A extends any[], B, C, D> = (f1: EntryFn<A, PromiseOr<B>>, f2: 
  * The returning function always operates as [`Promise`] though.
  */
 export function pipe<A extends any[], B, C, D>(...[f1, f2, f3]: Parameters<Pipe<A, B, C, D>>): ReturnType<Pipe<A, B, C, D>> {
-    return async (...args) => {
-        const a = await f1(...args);
+    return async (...a) => {
+        const b = await f1(...a);
 
-        const b = await f2(a);
+        const c = await f2(b);
 
-        const c = await f3(b);
+        const d = await f3(c);
 
-        return c;
+        return d;
     };
 }

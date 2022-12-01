@@ -3,6 +3,9 @@ import { lambda, Lambda } from "../core/lambda";
 import { apiGatewayProxyRequestMapper } from "../request_mappers";
 import { ApiGatewayProxyResponse, apiGatewayProxyResponseMapper } from "../response_mappers";
 
+/**
+ * A type of [`apiGatewayProxyLambda`] function.
+ */
 export type ApiGatewayProxyLambda<Req, Res> = Lambda<APIGatewayProxyHandler, Req, Res>;
 
 export function apiGatewayProxyLambda<Req, Res extends ApiGatewayProxyResponse>(

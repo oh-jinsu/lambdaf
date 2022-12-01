@@ -1,6 +1,9 @@
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from "aws-lambda";
 import { RequestMapper } from "../core/request_mapper";
 
+/**
+ * A type of [`apiGatewayProxyRequestMapper`] function.
+ */
 export type ApiGatewayProxyEventMapper<Req> = RequestMapper<APIGatewayProxyHandler, Omit<APIGatewayProxyEvent, keyof Req> & Req>;
 
 /**
