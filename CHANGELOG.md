@@ -23,3 +23,7 @@
 ## 0.2.2
 
 - Support CommonJS module
+
+## 0.2.5
+
+- Fix the module resolution
