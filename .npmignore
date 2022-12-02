@@ -3,10 +3,8 @@ node_modules
 src
 tsconfig.json
 
-test
-temp
-jest.config.js
-tsconfig.test.json
+*.spec.js
+coverage
 
 .eslintrc.js
 .gitignore

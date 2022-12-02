@@ -7,6 +7,7 @@ import { ResponseMapper } from "../core/response_mapper";
 export type ApiGatewayProxyResponse = {
     statusCode: number;
     body: any;
+    headers?: Record<string, string | number | boolean>;
 };
 
 /**

@@ -9,3 +9,9 @@
 ## 0.1.2
 
 - Add comments to make it explicit.
+
+## 0.2.0
+
+- Install ts-jest for testing.
+- Write test codes for 100% test coverage.
+- Add catcher for the error handling.

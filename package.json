@@ -1,11 +1,17 @@
 {
   "name": "lambdaf",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Best practice for building AWS Lambda functions",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lambdas": "./lib/lambdas/index.js",
+    "./usecase": "./lib/usecase/index.js",
+    "./request_mappers": "./lib/request_mappers/index.js",
+    "./response_mappers": "./lib/response_mappers/index.js",
+    "./core": "./lib/core/index.js"
+  },
   "scripts": {
-    "test": "rm -rf temp && tsc --p \"./tsconfig.test.json\" && jest",
+    "test": "jest --coverage",
     "deploy": "npm i && rm -rf lib && tsc -d && npm publish"
   },
   "repository": {
@@ -34,6 +40,16 @@
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^29.3.1",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.7.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/*.spec.ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    }
   }
 }
