@@ -15,3 +15,7 @@
 - Install ts-jest for testing.
 - Write test codes for 100% test coverage.
 - Add catcher for the error handling.
+
+## 0.2.1
+
+- Export types

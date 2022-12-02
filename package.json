@@ -1,14 +1,45 @@
 {
   "name": "lambdaf",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Best practice for building AWS Lambda functions",
   "exports": {
-    ".": "./lib/index.js",
-    "./lambdas": "./lib/lambdas/index.js",
-    "./usecase": "./lib/usecase/index.js",
-    "./request_mappers": "./lib/request_mappers/index.js",
-    "./response_mappers": "./lib/response_mappers/index.js",
-    "./core": "./lib/core/index.js"
+    ".": {
+      "import": {
+        "default": "./lib/index.js",
+        "types": "./lib/index.d.ts"
+      }
+    },
+    "./lambdas": {
+      "import": {
+        "default": "./lib/lambdas/index.js",
+        "types": "./lib/lambdas/index.d.ts"
+      }
+    },
+    "./usecase": {
+      "import": {
+        "default": "./lib/usecase/index.js",
+        "types": "./lib/usecase/index.d.ts"
+      }
+    },
+    "./request_mappers": {
+      "import": {
+        "default": "./lib/request_mappers/index.js",
+        "types": "./lib/request_mappers/index.d.ts"
+      }
+    },
+    "./response_mappers": {
+      "import": {
+        "default": "./lib/response_mappers/index.js",
+        "types": "./lib/response_mappers/index.d.ts"
+      }
+    },
+    "./core": {
+      "import": {
+        "default": "./lib/core/index.js",
+        "types": "./lib/core/index.d.ts"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "test": "jest --coverage",
