@@ -1,14 +1,5 @@
+import { EntryFn, Fn } from "../common/fn";
 import { PromiseOr } from "../common/promise";
-
-/**
- * A type of functon with multiple arguments and single result.
- */
-type EntryFn<T extends any[], U> = (...arg: T) => U;
-
-/**
- * A type of functon with single argument and single result.
- */
-type Fn<T, U> = (arg: T) => U;
 
 /**
  * A type of [`pipe`] function.
