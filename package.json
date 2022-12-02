@@ -1,39 +1,63 @@
 {
   "name": "lambdaf",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Best practice for building AWS Lambda functions",
   "exports": {
     ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
       "require": {
         "types": "./lib/index.d.ts",
         "default": "./lib/index.js"
       }
     },
     "./lambdas": {
+      "import": {
+        "types": "./lib/lambdas/index.d.ts",
+        "default": "./lib/lambdas/index.js"
+      },
       "require": {
         "types": "./lib/lambdas/index.d.ts",
         "default": "./lib/lambdas/index.js"
       }
     },
     "./usecase": {
+      "import": {
+        "types": "./lib/usecase/index.d.ts",
+        "default": "./lib/usecase/index.js"
+      },
       "require": {
         "types": "./lib/usecase/index.d.ts",
         "default": "./lib/usecase/index.js"
       }
     },
     "./request_mappers": {
+      "import": {
+        "types": "./lib/request_mappers/index.d.ts",
+        "default": "./lib/request_mappers/index.js"
+      },
       "require": {
         "types": "./lib/request_mappers/index.d.ts",
         "default": "./lib/request_mappers/index.js"
       }
     },
     "./response_mappers": {
+      "import": {
+        "types": "./lib/response_mappers/index.d.ts",
+        "default": "./lib/response_mappers/index.js"
+      },
       "require": {
         "types": "./lib/response_mappers/index.d.ts",
         "default": "./lib/response_mappers/index.js"
       }
     },
     "./core": {
+      "import": {
+        "types": "./lib/core/index.d.ts",
+        "default": "./lib/core/index.js"
+      },
       "require": {
         "types": "./lib/core/index.d.ts",
         "default": "./lib/core/index.js"
