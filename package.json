@@ -1,40 +1,40 @@
 {
   "name": "lambdaf",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Best practice for building AWS Lambda functions",
   "exports": {
     ".": {
-      "import": {
+      "require": {
         "default": "./lib/index.js",
         "types": "./lib/index.d.ts"
       }
     },
     "./lambdas": {
-      "import": {
+      "require": {
         "default": "./lib/lambdas/index.js",
         "types": "./lib/lambdas/index.d.ts"
       }
     },
     "./usecase": {
-      "import": {
+      "require": {
         "default": "./lib/usecase/index.js",
         "types": "./lib/usecase/index.d.ts"
       }
     },
     "./request_mappers": {
-      "import": {
+      "require": {
         "default": "./lib/request_mappers/index.js",
         "types": "./lib/request_mappers/index.d.ts"
       }
     },
     "./response_mappers": {
-      "import": {
+      "require": {
         "default": "./lib/response_mappers/index.js",
         "types": "./lib/response_mappers/index.d.ts"
       }
     },
     "./core": {
-      "import": {
+      "require": {
         "default": "./lib/core/index.js",
         "types": "./lib/core/index.d.ts"
       }

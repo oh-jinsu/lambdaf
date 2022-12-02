@@ -19,3 +19,7 @@
 ## 0.2.1
 
 - Export types
+
+## 0.2.2
+
+- Support CommonJS module
