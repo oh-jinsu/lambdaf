@@ -3,7 +3,7 @@ import { exception, response } from "../usecase/api_gateway_proxy_response";
 
 describe("ApiGatewayProxyLambda", () => {
     /**
-     * Declare your request.
+     * Declare a request.
      * This request contains a `body` which has a `name` property.
      */
     type Request = {
@@ -15,7 +15,7 @@ describe("ApiGatewayProxyLambda", () => {
     };
 
     /**
-     * Declare your response.
+     * Declare a response.
      * This response returns status code 200 with a `body`
      * which has a `message` property when it succeeds.
      */
@@ -26,15 +26,22 @@ describe("ApiGatewayProxyLambda", () => {
         };
     };
 
+    /**
+     * Set up a context.
+     */
+    const context = {
+        greet: (name: string) => `Hello, ${name}!`,
+    };
+
     test("should say 'Hello, Jinsu!'", async () => {
         /**
          * Set up the API Gateway Proxy Lambda handler.
          */
-        const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
+        const handler = apiGatewayProxyLambda<Request, Response, typeof context>(({ body }, context) => {
             return response(200, {
-                message: `Hello, ${body.name}!`,
+                message: context.greet(body.name),
             });
-        });
+        }, context);
 
         /**
          * Set up an event.
@@ -64,7 +71,7 @@ describe("ApiGatewayProxyLambda", () => {
         /**
          * Set up the API Gateway Proxy Lambda handler.
          */
-        const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
+        const handler = apiGatewayProxyLambda<Request, Response, typeof context>(({ body }, context) => {
             if (body.name.length === 0) {
                 throw exception(400, "The name is empty!");
             }
@@ -72,10 +79,10 @@ describe("ApiGatewayProxyLambda", () => {
             return {
                 statusCode: 200,
                 body: {
-                    message: `Hello, ${body.name}!`,
+                    message: context.greet(body.name),
                 },
             };
-        });
+        }, context);
 
         /**
          * Set up an event.

@@ -27,3 +27,7 @@
 ## 0.2.5
 
 - Fix the module resolution
+
+## 0.3.0
+
+- Add the injectable.
