@@ -2,6 +2,11 @@
 
 Best practice for building AWS Lambda functions.
 
+## Get started
+```sh
+npm i --save lambdaf
+```
+
 ## Example
 ```ts
 // Set up your request.
