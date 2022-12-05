@@ -1,4 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from "aws-lambda";
+import { toCamelCase } from "../common/case";
+import { map } from "../common/map";
 import { RequestMapper } from "../core/request_mapper";
 
 /**
@@ -28,11 +30,13 @@ export function apiGatewayProxyRequestMapper<Req extends ApiGatewayProxyRequest>
 ): ReturnType<ApiGatewayProxyRequestMapper<Req>> {
     const { body: eventBody, queryStringParameters: eventQueryStringParameters, pathParameters: pathParamters, ...others } = event;
 
-    const body = eventBody ? JSON.parse(eventBody) : {};
+    const mapByCamelCase = map(([key, value]) => [toCamelCase(key), value]);
 
-    const queryStringParameters = eventQueryStringParameters ? eventQueryStringParameters : {};
+    const body = mapByCamelCase(eventBody ? JSON.parse(eventBody) : {});
 
-    const pathParameters = pathParamters ? pathParamters : {};
+    const queryStringParameters = mapByCamelCase(eventQueryStringParameters ? eventQueryStringParameters : {});
+
+    const pathParameters = mapByCamelCase(pathParamters ? pathParamters : {});
 
     return {
         ...others,

@@ -31,3 +31,7 @@
 ## 0.3.0
 
 - Add the injectable.
+
+## 0.3.1
+
+- Support case converter.

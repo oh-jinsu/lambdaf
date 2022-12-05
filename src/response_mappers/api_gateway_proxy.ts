@@ -1,4 +1,6 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
+import { toSnakeCase } from "../common/case";
+import { map } from "../common/map";
 import { ResponseMapper } from "../core/response_mapper";
 
 /**
@@ -23,8 +25,10 @@ export type ApiGatewayProxyResponseMapper<Res extends ApiGatewayProxyResponse> =
 export function apiGatewayProxyResponseMapper<Res extends ApiGatewayProxyResponse>(
     ...[result]: Parameters<ApiGatewayProxyResponseMapper<Res>>
 ): ReturnType<ApiGatewayProxyResponseMapper<Res>> {
+    const mapBySnakeCase = map(([key, value]) => [toSnakeCase(key), value]);
+
     return {
         statusCode: result.statusCode,
-        body: JSON.stringify(result.body),
+        body: JSON.stringify(mapBySnakeCase(result.body)),
     };
 }

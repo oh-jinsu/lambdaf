@@ -24,7 +24,7 @@ describe("ApiGatewayProxy", () => {
          */
         const event = {
             body: JSON.stringify({
-                name: "Jinsu",
+                first_name: "Jinsu",
             }),
         };
 
@@ -37,7 +37,7 @@ describe("ApiGatewayProxy", () => {
          *  The body should contain the name.
          */
         expect(result.body).toStrictEqual({
-            name: "Jinsu",
+            firstName: "Jinsu",
         });
     });
 
@@ -64,7 +64,7 @@ describe("ApiGatewayProxy", () => {
          */
         const event = {
             queryStringParameters: {
-                name: "Jinsu",
+                "first-name": "Jinsu",
             },
         };
 
@@ -77,7 +77,7 @@ describe("ApiGatewayProxy", () => {
          * The querystring parameters should contain the name
          */
         expect(result.queryStringParameters).toStrictEqual({
-            name: "Jinsu",
+            firstName: "Jinsu",
         });
     });
 
@@ -104,7 +104,7 @@ describe("ApiGatewayProxy", () => {
          */
         const event = {
             pathParameters: {
-                name: "Jinsu",
+                "first-name": "Jinsu",
             },
         };
 
@@ -117,7 +117,7 @@ describe("ApiGatewayProxy", () => {
          * The path parameters should contain the name
          */
         expect(result.pathParameters).toStrictEqual({
-            name: "Jinsu",
+            firstName: "Jinsu",
         });
     });
 });

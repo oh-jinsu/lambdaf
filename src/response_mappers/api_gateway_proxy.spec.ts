@@ -7,7 +7,10 @@ describe("ApiGatewayProxyResponseMapper", () => {
          */
         const result = {
             statusCode: 200,
-            body: {},
+            body: {
+                lastName: "Oh",
+                firstName: "Jinsu",
+            },
         };
 
         /**
@@ -18,6 +21,11 @@ describe("ApiGatewayProxyResponseMapper", () => {
         /**
          * The body should be a stringified empty object.
          */
-        expect(response?.body).toBe("{}");
+        expect(response?.body).toBe(
+            JSON.stringify({
+                last_name: "Oh",
+                first_name: "Jinsu",
+            }),
+        );
     });
 });
