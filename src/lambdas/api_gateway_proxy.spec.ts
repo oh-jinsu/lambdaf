@@ -26,22 +26,15 @@ describe("ApiGatewayProxyLambda", () => {
         };
     };
 
-    /**
-     * Set up a context.
-     */
-    const context = {
-        greet: (name: string) => `Hello, ${name}!`,
-    };
-
     test("should say 'Hello, Jinsu!'", async () => {
         /**
          * Set up the API Gateway Proxy Lambda handler.
          */
-        const handler = apiGatewayProxyLambda<Request, Response, typeof context>(({ body }, context) => {
+        const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
             return response(200, {
-                message: context.greet(body.name),
+                message: `Hello, ${body.name}!`,
             });
-        }, context);
+        });
 
         /**
          * Set up an event.
@@ -71,7 +64,7 @@ describe("ApiGatewayProxyLambda", () => {
         /**
          * Set up the API Gateway Proxy Lambda handler.
          */
-        const handler = apiGatewayProxyLambda<Request, Response, typeof context>(({ body }, context) => {
+        const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
             if (body.name.length === 0) {
                 throw exception(400, "The name is empty!");
             }
@@ -79,10 +72,10 @@ describe("ApiGatewayProxyLambda", () => {
             return {
                 statusCode: 200,
                 body: {
-                    message: context.greet(body.name),
+                    message: `Hello, ${body.name}!`,
                 },
             };
-        }, context);
+        });
 
         /**
          * Set up an event.

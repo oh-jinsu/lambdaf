@@ -43,3 +43,7 @@
 ## 0.3.3
 
 - Do not convert keys of a response in snake case.
+
+## 0.3.4
+
+- Extract injectable from the ApiGatewayProxyLambda
