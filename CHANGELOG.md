@@ -47,3 +47,7 @@
 ## 0.3.4
 
 - Extract injectable from the ApiGatewayProxyLambda
+
+## 0.3.5
+
+- Add the loggable.
