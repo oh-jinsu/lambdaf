@@ -23,8 +23,8 @@ describe("ApiGatewayProxyResponseMapper", () => {
          */
         expect(response?.body).toBe(
             JSON.stringify({
-                last_name: "Oh",
-                first_name: "Jinsu",
+                lastName: "Oh",
+                firstName: "Jinsu",
             }),
         );
     });

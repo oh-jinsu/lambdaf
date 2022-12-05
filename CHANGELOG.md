@@ -39,3 +39,7 @@
 ## 0.3.2
 
 - Fix the invalid error handling from the ApiGatewayProxyCatcher.
+
+## 0.3.3
+
+- Do not convert keys of a response in snake case.
