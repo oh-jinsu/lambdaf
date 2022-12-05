@@ -35,3 +35,7 @@
 ## 0.3.1
 
 - Support case converter.
+
+## 0.3.2
+
+- Fix the invalid error handling from the ApiGatewayProxyCatcher.

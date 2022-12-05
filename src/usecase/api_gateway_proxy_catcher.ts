@@ -1,6 +1,6 @@
 import { UseCase } from "../core/usecase";
 import { ApiGatewayProxyResponse } from "../response_mappers";
-import { exception } from "./api_gateway_proxy_response";
+import { response } from "./api_gateway_proxy_response";
 
 /**
  * A type of the [apiGatewayProxyCatcher].
@@ -18,11 +18,20 @@ export function apiGatewayProxyCatcher<T, U extends ApiGatewayProxyResponse>(
         try {
             return await usecase(arg);
         } catch (error: any) {
-            if ("statusCode" in error && "body" in error && "message" in error.body) {
-                return exception(error.statusCode, error.body.message, error.body.code, error.body.headers);
+            if ("statusCode" in error && "message" in error) {
+                return response(
+                    error.statusCode,
+                    {
+                        code: error.code,
+                        message: error.message,
+                    },
+                    error.headers,
+                );
             }
 
-            return exception(500, "예기치 못한 오류입니다.");
+            return response(500, {
+                message: "예기치 못한 오류입니다.",
+            });
         }
     };
 }

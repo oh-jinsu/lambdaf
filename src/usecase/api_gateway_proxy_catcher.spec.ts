@@ -40,12 +40,12 @@ describe("ApiGatewayProxyCatcher", () => {
         const result = await usecase({});
 
         /**
-         * The status code should be 400.
+         * The status code should be 500.
          */
         expect(result.statusCode).toBe(500);
 
         /**
-         * The message in the body should say "잘못된 요청입니다".
+         * The message in the body should say "예기치 못한 오류입니다".
          */
         expect(result.body.message).toBe("예기치 못한 오류입니다.");
     });

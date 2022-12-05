@@ -46,10 +46,8 @@ describe("Exception", () => {
          */
         expect(result).toStrictEqual({
             statusCode: 400,
-            body: {
-                code: 0,
-                message: "BAD_REQUEST",
-            },
+            code: 0,
+            message: "BAD_REQUEST",
             headers: {},
         });
     });
@@ -65,10 +63,8 @@ describe("Exception", () => {
          */
         expect(result).toStrictEqual({
             statusCode: 400,
-            body: {
-                code: 0,
-                message: "BAD_REQUEST",
-            },
+            code: 0,
+            message: "BAD_REQUEST",
             headers: undefined,
         });
     });
@@ -84,10 +80,8 @@ describe("Exception", () => {
          */
         expect(result).toStrictEqual({
             statusCode: 400,
-            body: {
-                code: undefined,
-                message: "BAD_REQUEST",
-            },
+            code: undefined,
+            message: "BAD_REQUEST",
             headers: undefined,
         });
     });

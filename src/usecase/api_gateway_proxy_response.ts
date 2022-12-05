@@ -15,10 +15,8 @@ export function response<T = unknown, U = unknown, V = unknown>(statusCode: T, b
 export function exception<T = unknown, U = unknown>(statusCode: T, message: string, code?: number | string, headers?: U) {
     return {
         statusCode,
+        code,
+        message,
         headers,
-        body: {
-            code,
-            message,
-        },
     };
 }
