@@ -3,6 +3,7 @@ node_modules
 lib
 
 coverage
+temp
 
 .vscode
 .DS_Store
