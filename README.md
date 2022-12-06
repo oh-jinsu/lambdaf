@@ -35,7 +35,7 @@ const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
   return response(200, body: {
     message: `Hello, ${body.name}!`,
   });
-}, context);
+});
 
 // Set up an event for testing.
 const event = {

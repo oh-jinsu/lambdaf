@@ -1,6 +1,6 @@
 {
   "name": "lambdaf",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Best practice for building AWS Lambda functions",
   "main": "lib/index.js",
   "scripts": {

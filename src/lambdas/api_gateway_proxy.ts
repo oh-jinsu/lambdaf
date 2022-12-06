@@ -54,7 +54,7 @@ export type ApiGatewayProxyLambda<Req extends ApiGatewayProxyRequest, Res extend
  *   return response(200, {
  *     message: `Hello, ${body.name}!`,
  *   });
- * }, context);
+ * });
  *
  * const event = {
  *   body: JSON.stringify({

@@ -56,3 +56,7 @@
 
 - Update comments.
 - Add a default logger for the loggable.
+
+## 0.3.7
+
+- Update README.md
