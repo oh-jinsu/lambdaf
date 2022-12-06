@@ -51,3 +51,8 @@
 ## 0.3.5
 
 - Add the loggable.
+
+## 0.3.6
+
+- Update comments.
+- Add a default logger for the loggable.

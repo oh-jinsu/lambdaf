@@ -1,10 +1,11 @@
 /**
- * It receives a key and value pair and map it.
+ * Receive a key and value pair and transform it.
  */
 type KeyValueMapper<K extends string | number | symbol = string, V = unknown> = (params: [key: K, value: V]) => [key: K, value: V];
 
 /**
- * Converts all the keys of an object in a string to camelcase.
+ * Map a value. If the value is an object,
+ * It converts the key value pair by the passed mapper.
  */
 export const map =
     <K extends string | number | symbol = string, V = unknown>(mapper: KeyValueMapper<K, V>) =>

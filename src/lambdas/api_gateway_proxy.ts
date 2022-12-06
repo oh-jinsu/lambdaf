@@ -31,7 +31,6 @@ export type ApiGatewayProxyLambda<Req extends ApiGatewayProxyRequest, Res extend
  * so that the usecase can be dealt with safely.
  *
  * @param usecase Put your business logic.
- * @param context Access your dependencies.
  * @returns [`ApiGatewayProxyHandler`]
  *
  * ## Example
@@ -40,8 +39,8 @@ export type ApiGatewayProxyLambda<Req extends ApiGatewayProxyRequest, Res extend
  *   body: {
  *     name: string;
  *   };
- *   queryStringParameters: never;
- *   pathParameters: never;
+ *   queryStringParameters: {};
+ *   pathParameters: {};
  * };
  *
  * type Response = {
@@ -51,13 +50,9 @@ export type ApiGatewayProxyLambda<Req extends ApiGatewayProxyRequest, Res extend
  *   };
  * };
  *
- * const context = {
- *   greet: (name: string) => `Hello, ${name}!`,
- * };
- *
- * const handler = apiGatewayProxyLambda<Request, Response, typeof context>(({ body }, context) => {
+ * const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
  *   return response(200, {
- *     message: context.greet(body.name),
+ *     message: `Hello, ${body.name}!`,
  *   });
  * }, context);
  *

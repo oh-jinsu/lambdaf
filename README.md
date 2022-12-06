@@ -16,8 +16,8 @@ type Request = {
   body: {
     name: string;
   };
-  queryStringParameters: never;
-  pathParameters: never;
+  queryStringParameters: {};
+  pathParameters: {};
 };
 
 // Set up your response.
@@ -30,17 +30,10 @@ type Response = {
   };
 };
 
-// Set up your dependencies.
-// You can access whatever you've put into your context
-// when you write an usecase.
-const context = {
-  greet: (name: string) => `Hello, ${name}!`,
-};
-
 // Simply create a AWS Lambda handler with your usecase and context.
-const handler = apiGatewayProxyLambda<Request, Response, typeof context>(({ body }, context) => {
-  return response(200, {
-    message: context.greet(body.name),
+const handler = apiGatewayProxyLambda<Request, Response>(({ body }) => {
+  return response(200, body: {
+    message: `Hello, ${body.name}!`,
   });
 }, context);
 

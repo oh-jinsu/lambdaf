@@ -74,7 +74,7 @@ describe("ApiGatewayProxy", () => {
         const result = await apiGatewayProxyRequestMapper(event as any, {} as any, () => null);
 
         /**
-         * The querystring parameters should contain the name
+         * The querystring parameters should contain the name.
          */
         expect(result.queryStringParameters).toStrictEqual({
             firstName: "Jinsu",
@@ -114,7 +114,7 @@ describe("ApiGatewayProxy", () => {
         const result = await apiGatewayProxyRequestMapper(event as any, {} as any, () => null);
 
         /**
-         * The path parameters should contain the name
+         * The path parameters should contain the name.
          */
         expect(result.pathParameters).toStrictEqual({
             firstName: "Jinsu",

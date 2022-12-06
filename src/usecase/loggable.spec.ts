@@ -1,31 +1,75 @@
-import { loggable } from "./loggable"
+import { loggable } from "./loggable";
 
 describe("Loggable", () => {
-  test("should not log anything", async () => {
-    let output = "";
+    test("should not log the error on the output", async () => {
+        /**
+         * Create a loggable usecase.
+         */
+        const usecase = loggable(() => "Hello world!");
 
-    const logger = (e: any) => {
-      output += e?.message?.toString();
-    }
+        /**
+         * The usecase should not throw.
+         */
+        expect(() => usecase({})).not.toThrow();
+    });
 
-    const usecase = loggable(() => "Hello world!", logger);
+    test("should not log the error on the output", async () => {
+        /**
+         * Mock an output.
+         */
+        let output = "";
 
-    expect(() => usecase({})).not.toThrow();
+        /**
+         * Mock a logger.
+         */
+        const logger = (e: any) => {
+            output += e.message?.toString();
+        };
 
-    expect(output).toBe("")
-  })
+        /**
+         * Create a loggable usecase.
+         */
+        const usecase = loggable(() => "Hello world!", logger);
 
-  test("should log an error message", async () => {
-    let output = "";
+        /**
+         * The usecase should not throw.
+         */
+        expect(() => usecase({})).not.toThrow();
 
-    const logger = (e: any) => {
-      output += e?.message?.toString();
-    }
+        /**
+         * The logger should not log the error on the output.
+         */
+        expect(output).toBe("");
+    });
 
-    const usecase = loggable(() => { throw new Error("unexpected error") }, logger);
+    test("should log the error on the output", async () => {
+        /**
+         * Mock an output.
+         */
+        let output = "";
 
-    expect(() => usecase({})).rejects.toThrow();
+        /**
+         * Mock a logger.
+         */
+        const logger = (e: any) => {
+            output += e.message?.toString();
+        };
 
-    expect(output).toBe("unexpected error");
-  })
-})
+        /**
+         * Create a loggable usecase.
+         */
+        const usecase = loggable(() => {
+            throw new Error("unexpected error");
+        }, logger);
+
+        /**
+         * The usecase should throw.
+         */
+        expect(() => usecase({})).rejects.toThrow();
+
+        /**
+         * The logger should log the error on the output.
+         */
+        expect(output).toBe("unexpected error");
+    });
+});
