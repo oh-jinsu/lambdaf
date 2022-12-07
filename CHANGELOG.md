@@ -64,3 +64,7 @@
 ## 0.3.8
 
 - Add the type of APIGatewayProxyUseCase.
+
+## 0.3.9
+
+- Add the type of WithAPIGatewayProxyEvent.

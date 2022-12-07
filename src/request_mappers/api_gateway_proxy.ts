@@ -12,6 +12,8 @@ export type ApiGatewayProxyRequest = {
     pathParameters: any;
 };
 
+export type WithApiGatewayProxyEvent<Req extends ApiGatewayProxyRequest> = Omit<APIGatewayProxyEvent, keyof Req> & Req;
+
 /**
  * A type of [`apiGatewayProxyRequestMapper`] function.
  */
