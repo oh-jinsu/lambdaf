@@ -1,7 +1,6 @@
-import { APIGatewayProxyEvent, APIGatewayProxyHandler } from "aws-lambda";
-import { UseCase } from "../core";
-import { lambda, Lambda } from "../core/lambda";
-import { ApiGatewayProxyRequest, apiGatewayProxyRequestMapper } from "../request_mappers";
+import { APIGatewayProxyHandler } from "aws-lambda";
+import { UseCase, lambda, Lambda } from "../core";
+import { ApiGatewayProxyRequest, apiGatewayProxyRequestMapper, WithApiGatewayProxyEvent } from "../request_mappers";
 import { ApiGatewayProxyResponse, apiGatewayProxyResponseMapper } from "../response_mappers";
 import { apiGatewayProxyCatcher } from "../usecase";
 
@@ -10,10 +9,7 @@ import { apiGatewayProxyCatcher } from "../usecase";
  */
 export type ApiGatewayProxyLambda<Req extends ApiGatewayProxyRequest, Res extends ApiGatewayProxyResponse> = Lambda<APIGatewayProxyHandler, Req, Res>;
 
-export type ApiGatewayProxyUseCase<Req extends ApiGatewayProxyRequest, Res extends ApiGatewayProxyResponse> = UseCase<
-    Omit<APIGatewayProxyEvent, keyof Req> & Req,
-    Res
->;
+export type ApiGatewayProxyUseCase<Req extends ApiGatewayProxyRequest, Res extends ApiGatewayProxyResponse> = UseCase<WithApiGatewayProxyEvent<Req>, Res>;
 
 /**
  * Return a function that is compatible with [`ApiGatewayProxyHandler`].

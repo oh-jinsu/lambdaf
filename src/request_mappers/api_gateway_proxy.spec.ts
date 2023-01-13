@@ -1,6 +1,6 @@
 import { apiGatewayProxyRequestMapper } from "./api_gateway_proxy";
 
-describe("ApiGatewayProxy", () => {
+describe("ApiGatewayProxyRequestMapper", () => {
     test("should return empty body", async () => {
         /**
          * Set up empty event.

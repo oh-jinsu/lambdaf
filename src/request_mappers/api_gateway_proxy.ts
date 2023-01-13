@@ -17,10 +17,7 @@ export type WithApiGatewayProxyEvent<Req extends ApiGatewayProxyRequest> = Omit<
 /**
  * A type of [`apiGatewayProxyRequestMapper`] function.
  */
-export type ApiGatewayProxyRequestMapper<Req extends ApiGatewayProxyRequest> = RequestMapper<
-    APIGatewayProxyHandler,
-    Omit<APIGatewayProxyEvent, keyof Req> & Req
->;
+export type ApiGatewayProxyRequestMapper<Req extends ApiGatewayProxyRequest> = RequestMapper<APIGatewayProxyHandler, WithApiGatewayProxyEvent<Req>>;
 
 /**
  * Map [`ApiGatewayProxyEvent`] to `Req`.
