@@ -1,17 +1,10 @@
 import { eventBridgeLambda } from "..";
 
 describe("EventBridgeLambda", () => {
-    type Request = {
-        detailType: "Hello";
-        detail: {
-            name: string;
-        };
-    };
-
     test("should log", async () => {
         let output = "";
 
-        const handler = eventBridgeLambda<Request>(({ detail, detailType }) => {
+        const handler = eventBridgeLambda<"hello", { name: string }>(({ detail, detailType }) => {
             output += detailType;
 
             output += ", ";

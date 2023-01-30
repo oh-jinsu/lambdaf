@@ -1,24 +1,16 @@
 import { EventBridgeEvent, EventBridgeHandler } from "aws-lambda";
 import { RequestMapper } from "../core";
 
-/**
- * Should provide `detail`, `detailType` from the event.
- */
-export type EventBridgeRequest<T = any> = {
-    detailType: string;
-    detail: T;
-};
-
-export type WithEventBridgeEvent<Req extends EventBridgeRequest> = Omit<EventBridgeEvent<string, Req["detail"]>, "detail-type"> & {
-    detailType: string;
+export type WithEventBridgeEvent<DetailType extends string, Detail> = Omit<EventBridgeEvent<DetailType, Detail>, "detail-type"> & {
+    detailType: DetailType;
 };
 
 /**
  * A type of [`EventBridgeRequestMapper`] function.
  */
-export type EventBridgeRequestMapper<Req extends EventBridgeRequest> = RequestMapper<
-    EventBridgeHandler<Req["detailType"], Req["detail"], void>,
-    WithEventBridgeEvent<Req>
+export type EventBridgeRequestMapper<DetailType extends string, Detail> = RequestMapper<
+    EventBridgeHandler<DetailType, Detail, void>,
+    WithEventBridgeEvent<DetailType, Detail>
 >;
 
 /**
@@ -26,9 +18,9 @@ export type EventBridgeRequestMapper<Req extends EventBridgeRequest> = RequestMa
  *
  * Provides default `body`, `queries`, `paths` from the event.
  */
-export function eventBridgeRequestMapper<Req extends EventBridgeRequest>(
-    ...[event]: Parameters<EventBridgeRequestMapper<Req>>
-): ReturnType<EventBridgeRequestMapper<Req>> {
+export function eventBridgeRequestMapper<DetailType extends string, Detail>(
+    ...[event]: Parameters<EventBridgeRequestMapper<DetailType, Detail>>
+): ReturnType<EventBridgeRequestMapper<DetailType, Detail>> {
     const { detail, "detail-type": detailType } = event;
 
     return {
