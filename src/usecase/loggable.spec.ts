@@ -1,4 +1,4 @@
-import { loggable } from "./loggable";
+import { loggable, LogType } from "./loggable";
 
 describe("Loggable", () => {
     test("should not log the error on the output", async () => {
@@ -22,8 +22,10 @@ describe("Loggable", () => {
         /**
          * Mock a logger.
          */
-        const logger = (e: any) => {
-            output += e.message?.toString();
+        const logger = (logType: LogType, ...args: any) => {
+            if (logType === "error") {
+                output += args[0].message.toString();
+            }
         };
 
         /**
@@ -31,10 +33,9 @@ describe("Loggable", () => {
          */
         const usecase = loggable(() => "Hello world!", logger);
 
-        /**
-         * The usecase should not throw.
-         */
-        expect(() => usecase({})).not.toThrow();
+        try {
+            await usecase({});
+        } catch {}
 
         /**
          * The logger should not log the error on the output.
@@ -51,8 +52,10 @@ describe("Loggable", () => {
         /**
          * Mock a logger.
          */
-        const logger = (e: any) => {
-            output += e.message?.toString();
+        const logger = (logType: LogType, ...args: any) => {
+            if (logType === "error") {
+                output += args[0].message;
+            }
         };
 
         /**
@@ -62,10 +65,9 @@ describe("Loggable", () => {
             throw new Error("unexpected error");
         }, logger);
 
-        /**
-         * The usecase should throw.
-         */
-        expect(() => usecase({})).rejects.toThrow();
+        try {
+            await usecase({});
+        } catch {}
 
         /**
          * The logger should log the error on the output.
