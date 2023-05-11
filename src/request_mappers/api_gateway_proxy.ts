@@ -31,7 +31,21 @@ export function apiGatewayProxyRequestMapper<Req extends ApiGatewayProxyRequest>
 
     const mapByCamelCase = map(([key, value]) => [toCamelCase(key), value]);
 
-    const body = mapByCamelCase(eventBody ? JSON.parse(eventBody) : {});
+    const body  = (() => {
+        if (!eventBody) {
+            return {}
+        }
+
+        try {
+            const json = JSON.parse(eventBody)
+
+            return mapByCamelCase(json)
+        } catch (e) {
+            console.log(eventBody, e)
+
+            return eventBody
+        }
+    })()
 
     const queryStringParameters = mapByCamelCase(eventQueryStringParameters ? eventQueryStringParameters : {});
 
